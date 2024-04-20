@@ -1,5 +1,4 @@
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
 
 def simulate_market(n, true_value, desired_accuracy=0.05, interaction_factor=0.1, iterations=10):
@@ -52,26 +51,24 @@ num_sims = 1000
 true_value = 100    # set a true value for all simulations
 results = []
 
+# 209 market players
 for i in range(num_sims):
-    result = simulate_market(100, true_value)
+    result = simulate_market(209, true_value)   # change first param n to test with different player counts
     results.append(result)
 
 # calculate percentage of successsul predictions
 success_rate = np.mean(results)
 print(f"Accuracy within desired range: {success_rate * 100:.2f}%")
 
-# plot the results
-plt.figure(figsize=(10,5))
+# # plot the results
+# plt.figure(figsize=(10,5))
 
-# convert boolean results to ints
-int_results = [int(success) for success in results]
+# # convert boolean results to ints
+# int_results = [int(success) for success in results]
 
-plt.hist(int_results, bins=2, color='blue', alpha=0.7)
-plt.title("Simulation Results Distribution")
-plt.xlabel("Prediction Accuracy (within desired range)")
-plt.ylabel("Frequency")
-plt.xticks([0, 1], ["Outside Range", "Within Range"])
-plt.show()
-
-
-
+# plt.hist(int_results, bins=2, color='blue', alpha=0.7)
+# plt.title("Simulation Results Distribution")
+# plt.xlabel("Prediction Accuracy (within desired range)")
+# plt.ylabel("Frequency")
+# plt.xticks([0, 1], ["Outside Range", "Within Range"])
+# plt.show()
